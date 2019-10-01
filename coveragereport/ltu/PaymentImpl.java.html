@@ -99,9 +99,9 @@ public class PaymentImpl implements IPayment
 
     private int getLoan(int age, int income, int studyRate, int completionRatio)
     {
-<span class="pc bpc" id="L102" title="4 of 8 branches missed.">        if (studyRate &lt; 50 || age &lt; 20 || age &gt;= 47 || completionRatio &lt; 50)</span>
+<span class="pc bpc" id="L102" title="2 of 8 branches missed.">        if (studyRate &lt; 50 || age &lt; 20 || age &gt;= 47 || completionRatio &lt; 50)</span>
         {
-<span class="nc" id="L104">            return ZERO_LOAN;</span>
+<span class="fc" id="L104">            return ZERO_LOAN;</span>
         }
 <span class="pc bpc" id="L106" title="2 of 4 branches missed.">        if (studyRate &gt;= 100 &amp;&amp; income &gt; FULLTIME_INCOME)</span>
         {
@@ -120,9 +120,9 @@ public class PaymentImpl implements IPayment
 
     private int getSubsidy(int age, int income, int studyRate, int completionRatio)
     {
-<span class="pc bpc" id="L123" title="4 of 8 branches missed.">        if (studyRate &lt; 50 || age &lt; 20 || age &gt; 56 || completionRatio &lt; 50)</span>
+<span class="pc bpc" id="L123" title="2 of 8 branches missed.">        if (studyRate &lt; 50 || age &lt; 20 || age &gt; 56 || completionRatio &lt; 50)</span>
         {
-<span class="nc" id="L125">            return ZERO_SUBSIDY;</span>
+<span class="fc" id="L125">            return ZERO_SUBSIDY;</span>
         }
 <span class="pc bpc" id="L127" title="2 of 4 branches missed.">        if (studyRate &gt;= 100 &amp;&amp; income &gt; FULLTIME_INCOME)</span>
         {
