@@ -38,43 +38,59 @@ public class PaymentTest{
         PaymentImpl payment;
         payment = new PaymentImpl(getCalendar());
 
-        int yearborn19 =  2019-19;
-        String yearstring19 = Integer.toString(yearborn19) + "1001-0000";
+        for(int i = 0; i<100; i++){
+            int yearborn =  2019-i;
+            String yearstring = Integer.toString(yearborn) + "1001-0000";
 
-        int yearborn20 =  2019-20;
-        String yearstring20 = Integer.toString(yearborn20) + "1001-0000";
+            if (i<20) {
+                 assertEquals(zero,payment.getMonthlyAmount(yearstring, 19900, 100, 100));
+            }else if (i<47){
+                 assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring, 19900, 100, 100));
+            }else if (i<= 56){
+                 assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring, 19900, 100, 100));
+            }else{
+                 assertEquals(zero,payment.getMonthlyAmount(yearstring, 19900, 100, 100));
+            }
 
-        int yearborn21 =  2019-21;
-        String yearstring21 = Integer.toString(yearborn21) + "1001-0000";
+        }
 
-        int yearborn46 =  2019-46;
-        String yearstring46 = Integer.toString(yearborn46) + "1001-0000";
-
-        int yearborn47 =  2019-47;
-        String yearstring47 = Integer.toString(yearborn47) + "1001-0000";
-
-        int yearborn48 =  2019-48;
-        String yearstring48 = Integer.toString(yearborn48) + "1001-0000";
-
-        int yearborn55 =  2019-55;
-        String yearstring55 = Integer.toString(yearborn55) + "1001-0000";
-
-        int yearborn56 =  2019-56;
-        String yearstring56 = Integer.toString(yearborn56) + "1001-0000";
-
-        int yearborn57 =  2019-57;
-        String yearstring57 = Integer.toString(yearborn57) + "1001-0000";
-
-        assertEquals(zero,payment.getMonthlyAmount(yearstring19, 19900, 100, 100));
-        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring20, 19900, 100, 100));
-        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring21, 19900, 100, 100));
-        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring46, 19900, 100, 100));
-        assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring47, 19900, 100, 100));
-        assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring48, 19900, 100, 100));
-        assertEquals(fullsubs,payment.getMonthlyAmount(yearstring55, 19900, 100, 100));
-        assertEquals(fullsubs,payment.getMonthlyAmount(yearstring56, 19900, 100, 100));
-        assertEquals(zero,payment.getMonthlyAmount(yearstring57, 19900, 100, 100));
-
+        // int yearborn19 =  2019-19;
+        // String yearstring19 = Integer.toString(yearborn19) + "1001-0000";
+// 
+        // int yearborn20 =  2019-20;
+        // String yearstring20 = Integer.toString(yearborn20) + "1001-0000";
+// 
+        // int yearborn21 =  2019-21;
+        // String yearstring21 = Integer.toString(yearborn21) + "1001-0000";
+// 
+        // int yearborn46 =  2019-46;
+        // String yearstring46 = Integer.toString(yearborn46) + "1001-0000";
+// 
+        // int yearborn47 =  2019-47;
+        // String yearstring47 = Integer.toString(yearborn47) + "1001-0000";
+// 
+        // int yearborn48 =  2019-48;
+        // String yearstring48 = Integer.toString(yearborn48) + "1001-0000";
+// 
+        // int yearborn55 =  2019-55;
+        // String yearstring55 = Integer.toString(yearborn55) + "1001-0000";
+// 
+        // int yearborn56 =  2019-56;
+        // String yearstring56 = Integer.toString(yearborn56) + "1001-0000";
+// 
+        // int yearborn57 =  2019-57;
+        // String yearstring57 = Integer.toString(yearborn57) + "1001-0000";
+// 
+        // assertEquals(zero,payment.getMonthlyAmount(yearstring19, 19900, 100, 100));
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring20, 19900, 100, 100));
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring21, 19900, 100, 100));
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring46, 19900, 100, 100));
+        // assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring47, 19900, 100, 100));
+        // assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring48, 19900, 100, 100));
+        // assertEquals(fullsubs,payment.getMonthlyAmount(yearstring55, 19900, 100, 100));
+        // assertEquals(fullsubs,payment.getMonthlyAmount(yearstring56, 19900, 100, 100));
+        // assertEquals(zero,payment.getMonthlyAmount(yearstring57, 19900, 100, 100));
+// 
     }
 
     @Test
@@ -82,13 +98,26 @@ public class PaymentTest{
         PaymentImpl payment;
         payment = new PaymentImpl(getCalendar());
 
+        for (int i = 0; i<150000; i++){
+                if (i <= fulltime){
+                        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount("19970808-0000", i, 100, 100));
+                } else{
+                        assertEquals(zero,payment.getMonthlyAmount("19970808-0000", i, 100, 100));       
+                }
 
-        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount("19970808-0000", fulltime-10, 100, 100));
-        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount("19970808-0000", fulltime, 100, 100));
-        assertEquals(zero,payment.getMonthlyAmount("19970808-0000", fulltime+10, 100, 100));
-        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount("19970808-0000", parttime-10, 50, 100));
-        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount("19970808-0000", parttime, 50, 100));
-        assertEquals(zero,payment.getMonthlyAmount("19970808-0000", parttime+10, 50, 100));
+                if (i<=parttime){
+                        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount("19970808-0000", i, 50, 100));
+                }else {
+                        assertEquals(zero,payment.getMonthlyAmount("19970808-0000", i, 50, 100));
+                }
+        }
+
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount("19970808-0000", fulltime-10, 100, 100));
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount("19970808-0000", fulltime, 100, 100));
+        // assertEquals(zero,payment.getMonthlyAmount("19970808-0000", fulltime+10, 100, 100));
+        // assertEquals(halfloan+halfsubs,payment.getMonthlyAmount("19970808-0000", parttime-10, 50, 100));
+        // assertEquals(halfloan+halfsubs,payment.getMonthlyAmount("19970808-0000", parttime, 50, 100));
+        // assertEquals(zero,payment.getMonthlyAmount("19970808-0000", parttime+10, 50, 100));
         //assertEquals(zero,payment.getMonthlyAmount("19970808-0000", fulltime, 100, 100));
 
     }

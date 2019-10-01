@@ -38,60 +38,89 @@ import org.junit.Test;
         PaymentImpl payment;
 <span class="fc" id="L39">        payment = new PaymentImpl(getCalendar());</span>
 
-<span class="fc" id="L41">        int yearborn19 =  2019-19;</span>
-<span class="fc" id="L42">        String yearstring19 = Integer.toString(yearborn19) + &quot;1001-0000&quot;;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        for(int i = 0; i&lt;100; i++){</span>
+<span class="fc" id="L42">            int yearborn =  2019-i;</span>
+<span class="fc" id="L43">            String yearstring = Integer.toString(yearborn) + &quot;1001-0000&quot;;</span>
 
-<span class="fc" id="L44">        int yearborn20 =  2019-20;</span>
-<span class="fc" id="L45">        String yearstring20 = Integer.toString(yearborn20) + &quot;1001-0000&quot;;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            if (i&lt;20) {</span>
+<span class="fc" id="L46">                 assertEquals(zero,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            }else if (i&lt;47){</span>
+<span class="fc" id="L48">                 assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">            }else if (i&lt;= 56){</span>
+<span class="fc" id="L50">                 assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
+            }else{
+<span class="fc" id="L52">                 assertEquals(zero,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
+            }
 
-<span class="fc" id="L47">        int yearborn21 =  2019-21;</span>
-<span class="fc" id="L48">        String yearstring21 = Integer.toString(yearborn21) + &quot;1001-0000&quot;;</span>
+        }
 
-<span class="fc" id="L50">        int yearborn46 =  2019-46;</span>
-<span class="fc" id="L51">        String yearstring46 = Integer.toString(yearborn46) + &quot;1001-0000&quot;;</span>
-
-<span class="fc" id="L53">        int yearborn47 =  2019-47;</span>
-<span class="fc" id="L54">        String yearstring47 = Integer.toString(yearborn47) + &quot;1001-0000&quot;;</span>
-
-<span class="fc" id="L56">        int yearborn48 =  2019-48;</span>
-<span class="fc" id="L57">        String yearstring48 = Integer.toString(yearborn48) + &quot;1001-0000&quot;;</span>
-
-<span class="fc" id="L59">        int yearborn55 =  2019-55;</span>
-<span class="fc" id="L60">        String yearstring55 = Integer.toString(yearborn55) + &quot;1001-0000&quot;;</span>
-
-<span class="fc" id="L62">        int yearborn56 =  2019-56;</span>
-<span class="fc" id="L63">        String yearstring56 = Integer.toString(yearborn56) + &quot;1001-0000&quot;;</span>
-
-<span class="fc" id="L65">        int yearborn57 =  2019-57;</span>
-<span class="fc" id="L66">        String yearstring57 = Integer.toString(yearborn57) + &quot;1001-0000&quot;;</span>
-
-<span class="fc" id="L68">        assertEquals(zero,payment.getMonthlyAmount(yearstring19, 19900, 100, 100));</span>
-<span class="fc" id="L69">        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring20, 19900, 100, 100));</span>
-<span class="fc" id="L70">        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring21, 19900, 100, 100));</span>
-<span class="fc" id="L71">        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring46, 19900, 100, 100));</span>
-<span class="fc" id="L72">        assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring47, 19900, 100, 100));</span>
-<span class="fc" id="L73">        assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring48, 19900, 100, 100));</span>
-<span class="fc" id="L74">        assertEquals(fullsubs,payment.getMonthlyAmount(yearstring55, 19900, 100, 100));</span>
-<span class="fc" id="L75">        assertEquals(fullsubs,payment.getMonthlyAmount(yearstring56, 19900, 100, 100));</span>
-<span class="fc" id="L76">        assertEquals(zero,payment.getMonthlyAmount(yearstring57, 19900, 100, 100));</span>
-
-<span class="fc" id="L78">    }</span>
+        // int yearborn19 =  2019-19;
+        // String yearstring19 = Integer.toString(yearborn19) + &quot;1001-0000&quot;;
+// 
+        // int yearborn20 =  2019-20;
+        // String yearstring20 = Integer.toString(yearborn20) + &quot;1001-0000&quot;;
+// 
+        // int yearborn21 =  2019-21;
+        // String yearstring21 = Integer.toString(yearborn21) + &quot;1001-0000&quot;;
+// 
+        // int yearborn46 =  2019-46;
+        // String yearstring46 = Integer.toString(yearborn46) + &quot;1001-0000&quot;;
+// 
+        // int yearborn47 =  2019-47;
+        // String yearstring47 = Integer.toString(yearborn47) + &quot;1001-0000&quot;;
+// 
+        // int yearborn48 =  2019-48;
+        // String yearstring48 = Integer.toString(yearborn48) + &quot;1001-0000&quot;;
+// 
+        // int yearborn55 =  2019-55;
+        // String yearstring55 = Integer.toString(yearborn55) + &quot;1001-0000&quot;;
+// 
+        // int yearborn56 =  2019-56;
+        // String yearstring56 = Integer.toString(yearborn56) + &quot;1001-0000&quot;;
+// 
+        // int yearborn57 =  2019-57;
+        // String yearstring57 = Integer.toString(yearborn57) + &quot;1001-0000&quot;;
+// 
+        // assertEquals(zero,payment.getMonthlyAmount(yearstring19, 19900, 100, 100));
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring20, 19900, 100, 100));
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring21, 19900, 100, 100));
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring46, 19900, 100, 100));
+        // assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring47, 19900, 100, 100));
+        // assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring48, 19900, 100, 100));
+        // assertEquals(fullsubs,payment.getMonthlyAmount(yearstring55, 19900, 100, 100));
+        // assertEquals(fullsubs,payment.getMonthlyAmount(yearstring56, 19900, 100, 100));
+        // assertEquals(zero,payment.getMonthlyAmount(yearstring57, 19900, 100, 100));
+// 
+<span class="fc" id="L94">    }</span>
 
     @Test
     public void incomeWhileStudyingRequierments() throws IOException{
         PaymentImpl payment;
-<span class="fc" id="L83">        payment = new PaymentImpl(getCalendar());</span>
+<span class="fc" id="L99">        payment = new PaymentImpl(getCalendar());</span>
 
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        for (int i = 0; i&lt;150000; i++){</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">                if (i &lt;= fulltime){</span>
+<span class="fc" id="L103">                        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 100, 100));</span>
+                } else{
+<span class="fc" id="L105">                        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 100, 100));       </span>
+                }
 
-<span class="fc" id="L86">        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime-10, 100, 100));</span>
-<span class="fc" id="L87">        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime, 100, 100));</span>
-<span class="fc" id="L88">        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime+10, 100, 100));</span>
-<span class="fc" id="L89">        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime-10, 50, 100));</span>
-<span class="fc" id="L90">        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime, 50, 100));</span>
-<span class="fc" id="L91">        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime+10, 50, 100));</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">                if (i&lt;=parttime){</span>
+<span class="fc" id="L109">                        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 50, 100));</span>
+                }else {
+<span class="fc" id="L111">                        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 50, 100));</span>
+                }
+        }
+
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime-10, 100, 100));
+        // assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime, 100, 100));
+        // assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime+10, 100, 100));
+        // assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime-10, 50, 100));
+        // assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime, 50, 100));
+        // assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime+10, 50, 100));
         //assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime, 100, 100));
 
-<span class="fc" id="L94">    }</span>
+<span class="fc" id="L123">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
