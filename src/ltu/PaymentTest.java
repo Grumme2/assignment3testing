@@ -78,14 +78,19 @@ public class PaymentTest{
     }
 
     @Test
-    public void incomeWhileStudyingRequierments(){
+    public void incomeWhileStudyingRequierments() throws IOException{
         PaymentImpl payment;
         payment = new PaymentImpl(getCalendar());
 
-        assertEquals(zero,payment.getMonthlyAmount("19990808-0000", 19900, 100, 100));
 
+        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount("19970808-0000", fulltime-10, 100, 100));
+        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount("19970808-0000", fulltime, 100, 100));
+        assertEquals(zero,payment.getMonthlyAmount("19970808-0000", fulltime+10, 100, 100));
+        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount("19970808-0000", parttime-10, 50, 100));
+        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount("19970808-0000", parttime, 50, 100));
+        assertEquals(zero,payment.getMonthlyAmount("19970808-0000", parttime+10, 50, 100));
+        //assertEquals(zero,payment.getMonthlyAmount("19970808-0000", fulltime, 100, 100));
 
-        
     }
 
 }

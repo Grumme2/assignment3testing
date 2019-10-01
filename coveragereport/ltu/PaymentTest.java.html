@@ -75,8 +75,23 @@ import org.junit.Test;
 <span class="fc" id="L75">        assertEquals(fullsubs,payment.getMonthlyAmount(yearstring56, 19900, 100, 100));</span>
 <span class="fc" id="L76">        assertEquals(zero,payment.getMonthlyAmount(yearstring57, 19900, 100, 100));</span>
 
-        
+<span class="fc" id="L78">    }</span>
 
-<span class="fc" id="L80">    }</span>
+    @Test
+    public void incomeWhileStudyingRequierments() throws IOException{
+        PaymentImpl payment;
+<span class="fc" id="L83">        payment = new PaymentImpl(getCalendar());</span>
+
+
+<span class="fc" id="L86">        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime-10, 100, 100));</span>
+<span class="fc" id="L87">        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime, 100, 100));</span>
+<span class="fc" id="L88">        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime+10, 100, 100));</span>
+<span class="fc" id="L89">        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime-10, 50, 100));</span>
+<span class="fc" id="L90">        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime, 50, 100));</span>
+<span class="fc" id="L91">        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime+10, 50, 100));</span>
+        //assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime, 100, 100));
+
+<span class="fc" id="L94">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
