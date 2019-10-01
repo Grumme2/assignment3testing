@@ -29,5 +29,47 @@ import org.junit.Test;
 <span class="fc" id="L29">        payment = new PaymentImpl(getCalendar());</span>
 <span class="fc" id="L30">        assertEquals(9904,payment.getMonthlyAmount(&quot;19970606-7973&quot;, 19900, 100, 100));</span>
 <span class="fc" id="L31">    }</span>
+
+    @Test
+    public void getstudyamounttest() throws IOException {
+<span class="fc" id="L35">        PaymentImpl test = new PaymentImpl(getCalendar());</span>
+<span class="fc" id="L36">        int testnotime = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,0,100);</span>
+<span class="fc" id="L37">        int testhalftime = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,50,100);</span>
+<span class="fc" id="L38">        int testalmostfulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,99,100);</span>
+<span class="fc" id="L39">        int testfulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,100,100);</span>
+<span class="fc" id="L40">        assertEquals(0,testnotime);</span>
+<span class="fc" id="L41">        assertEquals(1396,testhalftime-3564);</span>
+<span class="fc" id="L42">        assertEquals(1396,testalmostfulltime-3564);</span>
+<span class="fc" id="L43">        assertEquals(2816,testfulltime-7088);</span>
+<span class="fc" id="L44">    }</span>
+
+    @Test
+    public void getstudyratiotest() throws IOException {
+<span class="fc" id="L48">        PaymentImpl test = new PaymentImpl(getCalendar());</span>
+
+<span class="fc" id="L50">        int testfull_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,100,0);</span>
+<span class="fc" id="L51">        int testhalf_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,50,0);</span>
+<span class="fc" id="L52">        int testno_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,0,0);</span>
+
+<span class="fc" id="L54">        int testfull_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,100,50);</span>
+<span class="fc" id="L55">        int testhalf_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,50,50);</span>
+<span class="fc" id="L56">        int testno_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,0,50);</span>
+
+<span class="fc" id="L58">        int testfull_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,100,100);        </span>
+<span class="fc" id="L59">        int testhalf_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,50,100);      </span>
+<span class="fc" id="L60">        int testno_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;,0,0,100);   </span>
+
+<span class="fc" id="L62">        assertEquals(0,testfull_noratio);</span>
+<span class="fc" id="L63">        assertEquals(0,testhalf_noratio);</span>
+<span class="fc" id="L64">        assertEquals(0,testno_noratio);</span>
+
+<span class="fc" id="L66">        assertEquals(7088+2816,testfull_halfratio);</span>
+<span class="fc" id="L67">        assertEquals(3564+1396,testhalf_halfratio);</span>
+<span class="fc" id="L68">        assertEquals(0,testno_halfratio);</span>
+
+<span class="fc" id="L70">        assertEquals(7088+2816,testfull_fullratio);</span>
+<span class="fc" id="L71">        assertEquals(3564+1396,testhalf_fullratio);</span>
+<span class="fc" id="L72">        assertEquals(0,testno_fullratio);</span>
+<span class="fc" id="L73">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
