@@ -2,11 +2,20 @@
 
 
 package ltu;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import ltu.testtimeclass;
+
+
 import static ltu.CalendarFactory.getCalendar;
 import static org.junit.Assert.*;
 
 import java.beans.Transient;
 import java.io.IOException;
+import java.util.Date;
 import java.util.zip.ZipError;
 
 import org.junit.Test;
@@ -152,5 +161,72 @@ public class PaymentTest{
         //assertEquals(zero,payment.getMonthlyAmount("19970808-0000", fulltime, 100, 100));
 
     }
+
+    @Test
+    public void timetest() throws IOException{
+        //testtimeclass testtime;
+        PaymentImpl payment;
+        ICalendar calendar = getCalendar("ltu.testtimeclass");
+        // payment = new PaymentImpl(calendar);
+// 
+        
+
+        // DateFormat format = new SimpleDateFormat("yyyyMMdd");
+        // Calendar cal = Calendar.getInstance();    
+        // cal.setTime(calendar.getDate());
+        // cal.add(Calendar.YEAR,-3);
+        // cal.add(Calendar.MONTH,-9);
+        // cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        // 
+// 
+        // int weekDay = cal.get(Calendar.DAY_OF_WEEK);
+        // if (weekDay == Calendar.SUNDAY)
+        // {      // payment = new PaymentImpl(calendar);
+// 
+        
+
+        // DateFormat format = new SimpleDateFormat("yyyyMMdd");
+        // Calendar cal = Calendar.getInstance();    
+        // cal.setTime(calendar.getDate());
+        // cal.add(Calendar.YEAR,-3);
+        // cal.add(Calendar.MONTH,-9);
+        // cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        // 
+// 
+        // int weekDay = cal.get(Calendar.DAY_OF_WEEK);
+        // if (weekDay == Calendar.SUNDAY)
+        // {
+        //     cal.add(Calendar.DATE, -2);
+// 
+        // } else if (weekDay == Calendar.SATURDAY)
+        // {
+        //     cal.add(Calendar.DATE, -1);
+        //     format.format(cal.getTime());
+        // }
+        // ICalendar calen = (ICalendar) cal;
+        //     cal.add(Calendar.DATE, -2);
+// 
+        // } else if (weekDay == Calendar.SATURDAY)
+        // {
+        //     cal.add(Calendar.DATE, -1);
+        //     format.format(cal.getTime());
+        // }
+        // ICalendar calen = (ICalendar) cal;
+        payment = new PaymentImpl(calendar);
+
+        assertEquals("20160129", payment.getNextPaymentDay());
+
+        assertEquals("20160229", payment.getNextPaymentDay());
+
+
+        // assertEquals("20160129", payment.getNextPaymentDay());   // "20160129" "Fri Jan 29"
+        // assertEquals("20160229", payment.getNextPaymentDay());  // "20160229" "Mon Feb 29"
+        assertEquals("20160331", payment.getNextPaymentDay());   // "20160331" "Thu Mar 31"
+        assertEquals("20160429", payment.getNextPaymentDay());  //" 20160429" "Fri Apr 29"
+        assertEquals("20160531", payment.getNextPaymentDay());   // "20160531" "Tue May 31"
+        assertEquals("20160630", payment.getNextPaymentDay());   // "20160631" "Thu Jun 31"
+
+    }
+
 
 }

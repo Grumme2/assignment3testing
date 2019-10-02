@@ -2,23 +2,32 @@
 
 
 package ltu;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import ltu.testtimeclass;
+
+
 import static ltu.CalendarFactory.getCalendar;
 import static org.junit.Assert.*;
 
 import java.beans.Transient;
 import java.io.IOException;
+import java.util.Date;
 import java.util.zip.ZipError;
 
 import org.junit.Test;
 
-<span class="fc" id="L14">public class PaymentTest{</span>
-<span class="fc" id="L15">    int fullloan = 7088;</span>
-<span class="fc" id="L16">    int halfloan = 3564;</span>
-<span class="fc" id="L17">    int zero = 0;</span>
-<span class="fc" id="L18">    int fullsubs = 2816;</span>
-<span class="fc" id="L19">    int halfsubs = 1396;</span>
-<span class="fc" id="L20">    int fulltime = 85813;</span>
-<span class="fc" id="L21">    int parttime = 128722;</span>
+<span class="fc" id="L23">public class PaymentTest{</span>
+<span class="fc" id="L24">    int fullloan = 7088;</span>
+<span class="fc" id="L25">    int halfloan = 3564;</span>
+<span class="fc" id="L26">    int zero = 0;</span>
+<span class="fc" id="L27">    int fullsubs = 2816;</span>
+<span class="fc" id="L28">    int halfsubs = 1396;</span>
+<span class="fc" id="L29">    int fulltime = 85813;</span>
+<span class="fc" id="L30">    int parttime = 128722;</span>
 
     // @Test
     // public void testSilly()
@@ -36,51 +45,51 @@ import org.junit.Test;
     @Test
     public void getpaymentamounttestage() throws IOException{
         PaymentImpl payment;
-<span class="fc" id="L39">        payment = new PaymentImpl(getCalendar());</span>
+<span class="fc" id="L48">        payment = new PaymentImpl(getCalendar());</span>
 
-<span class="fc" id="L41">        boolean thrownpid= false;</span>
-<span class="fc" id="L42">        boolean throwncomp=false; </span>
-<span class="fc" id="L43">        boolean thrownmoney= false;</span>
-<span class="fc" id="L44">        boolean thrownrate = false;</span>
+<span class="fc" id="L50">        boolean thrownpid= false;</span>
+<span class="fc" id="L51">        boolean throwncomp=false; </span>
+<span class="fc" id="L52">        boolean thrownmoney= false;</span>
+<span class="fc" id="L53">        boolean thrownrate = false;</span>
 
         try {
-<span class="nc" id="L47">                payment.getMonthlyAmount(null, 900, 100, 100);</span>
-<span class="fc" id="L48">        } catch (IllegalArgumentException e) {</span>
-<span class="fc" id="L49">                thrownpid = true;</span>
-<span class="nc" id="L50">        }</span>
+<span class="nc" id="L56">                payment.getMonthlyAmount(null, 900, 100, 100);</span>
+<span class="fc" id="L57">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L58">                thrownpid = true;</span>
+<span class="nc" id="L59">        }</span>
         try {
-<span class="nc" id="L52">                payment.getMonthlyAmount(&quot;19990505-0000&quot;, -5, 100, 100);</span>
-<span class="fc" id="L53">        } catch (IllegalArgumentException e) {</span>
-<span class="fc" id="L54">                thrownmoney = true;</span>
-<span class="nc" id="L55">        }</span>
+<span class="nc" id="L61">                payment.getMonthlyAmount(&quot;19990505-0000&quot;, -5, 100, 100);</span>
+<span class="fc" id="L62">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L63">                thrownmoney = true;</span>
+<span class="nc" id="L64">        }</span>
         try {
-<span class="nc" id="L57">                payment.getMonthlyAmount(&quot;19990505-0000&quot;, 900, -3, 100);</span>
-<span class="fc" id="L58">        } catch (IllegalArgumentException e) {</span>
-<span class="fc" id="L59">                thrownrate = true;</span>
-<span class="nc" id="L60">        }</span>
+<span class="nc" id="L66">                payment.getMonthlyAmount(&quot;19990505-0000&quot;, 900, -3, 100);</span>
+<span class="fc" id="L67">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L68">                thrownrate = true;</span>
+<span class="nc" id="L69">        }</span>
         try {
-<span class="nc" id="L62">                payment.getMonthlyAmount(&quot;19990505-0000&quot;, 900, 100, -2);</span>
-<span class="fc" id="L63">        } catch (IllegalArgumentException e) {</span>
-<span class="fc" id="L64">                throwncomp = true;</span>
-<span class="nc" id="L65">        }</span>
+<span class="nc" id="L71">                payment.getMonthlyAmount(&quot;19990505-0000&quot;, 900, 100, -2);</span>
+<span class="fc" id="L72">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L73">                throwncomp = true;</span>
+<span class="nc" id="L74">        }</span>
 
-<span class="fc" id="L67">        assertTrue(&quot;thrownpid&quot;,thrownpid);</span>
-<span class="fc" id="L68">        assertTrue(&quot;thrownmoney&quot;, thrownmoney);</span>
-<span class="fc" id="L69">        assertTrue(&quot;thrownrate&quot;, thrownrate);</span>
-<span class="fc" id="L70">        assertTrue(&quot;throwncomp&quot;, throwncomp);</span>
+<span class="fc" id="L76">        assertTrue(&quot;thrownpid&quot;,thrownpid);</span>
+<span class="fc" id="L77">        assertTrue(&quot;thrownmoney&quot;, thrownmoney);</span>
+<span class="fc" id="L78">        assertTrue(&quot;thrownrate&quot;, thrownrate);</span>
+<span class="fc" id="L79">        assertTrue(&quot;throwncomp&quot;, throwncomp);</span>
 
-<span class="fc bfc" id="L72" title="All 2 branches covered.">        for(int i = 0; i&lt;100; i++){</span>
-<span class="fc" id="L73">            int yearborn =  2019-i;</span>
-<span class="fc" id="L74">            String yearstring = Integer.toString(yearborn) + &quot;1001-0000&quot;;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        for(int i = 0; i&lt;100; i++){</span>
+<span class="fc" id="L82">            int yearborn =  2019-i;</span>
+<span class="fc" id="L83">            String yearstring = Integer.toString(yearborn) + &quot;1001-0000&quot;;</span>
 
-<span class="fc bfc" id="L76" title="All 2 branches covered.">            if (i&lt;20) {</span>
-<span class="fc" id="L77">                 assertEquals(zero,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
-<span class="fc bfc" id="L78" title="All 2 branches covered.">            }else if (i&lt;47){</span>
-<span class="fc" id="L79">                 assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
-<span class="fc bfc" id="L80" title="All 2 branches covered.">            }else if (i&lt;= 56){</span>
-<span class="fc" id="L81">                 assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">            if (i&lt;20) {</span>
+<span class="fc" id="L86">                 assertEquals(zero,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">            }else if (i&lt;47){</span>
+<span class="fc" id="L88">                 assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            }else if (i&lt;= 56){</span>
+<span class="fc" id="L90">                 assertEquals(zero+fullsubs,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
             }else{
-<span class="fc" id="L83">                 assertEquals(zero,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
+<span class="fc" id="L92">                 assertEquals(zero,payment.getMonthlyAmount(yearstring, 19900, 100, 100));</span>
             }
 
         }
@@ -122,24 +131,24 @@ import org.junit.Test;
         // assertEquals(fullsubs,payment.getMonthlyAmount(yearstring56, 19900, 100, 100));
         // assertEquals(zero,payment.getMonthlyAmount(yearstring57, 19900, 100, 100));
 // 
-<span class="fc" id="L125">    }</span>
+<span class="fc" id="L134">    }</span>
 
     @Test
     public void incomeWhileStudyingRequierments() throws IOException{
         PaymentImpl payment;
-<span class="fc" id="L130">        payment = new PaymentImpl(getCalendar());</span>
+<span class="fc" id="L139">        payment = new PaymentImpl(getCalendar());</span>
 
-<span class="fc bfc" id="L132" title="All 2 branches covered.">        for (int i = 0; i&lt;150000; i++){</span>
-<span class="fc bfc" id="L133" title="All 2 branches covered.">                if (i &lt;= fulltime){</span>
-<span class="fc" id="L134">                        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 100, 100));</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">        for (int i = 0; i&lt;150000; i++){</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">                if (i &lt;= fulltime){</span>
+<span class="fc" id="L143">                        assertEquals(fullloan+fullsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 100, 100));</span>
                 } else{
-<span class="fc" id="L136">                        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 100, 100));       </span>
+<span class="fc" id="L145">                        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 100, 100));       </span>
                 }
 
-<span class="fc bfc" id="L139" title="All 2 branches covered.">                if (i&lt;=parttime){</span>
-<span class="fc" id="L140">                        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 50, 100));</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">                if (i&lt;=parttime){</span>
+<span class="fc" id="L149">                        assertEquals(halfloan+halfsubs,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 50, 100));</span>
                 }else {
-<span class="fc" id="L142">                        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 50, 100));</span>
+<span class="fc" id="L151">                        assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, i, 50, 100));</span>
                 }
         }
 
@@ -151,7 +160,74 @@ import org.junit.Test;
         // assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, parttime+10, 50, 100));
         //assertEquals(zero,payment.getMonthlyAmount(&quot;19970808-0000&quot;, fulltime, 100, 100));
 
-<span class="fc" id="L154">    }</span>
+<span class="fc" id="L163">    }</span>
+
+    @Test
+    public void timetest() throws IOException{
+        //testtimeclass testtime;
+        PaymentImpl payment;
+<span class="fc" id="L169">        ICalendar calendar = getCalendar(&quot;ltu.testtimeclass&quot;);</span>
+        // payment = new PaymentImpl(calendar);
+// 
+        
+
+        // DateFormat format = new SimpleDateFormat(&quot;yyyyMMdd&quot;);
+        // Calendar cal = Calendar.getInstance();    
+        // cal.setTime(calendar.getDate());
+        // cal.add(Calendar.YEAR,-3);
+        // cal.add(Calendar.MONTH,-9);
+        // cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        // 
+// 
+        // int weekDay = cal.get(Calendar.DAY_OF_WEEK);
+        // if (weekDay == Calendar.SUNDAY)
+        // {      // payment = new PaymentImpl(calendar);
+// 
+        
+
+        // DateFormat format = new SimpleDateFormat(&quot;yyyyMMdd&quot;);
+        // Calendar cal = Calendar.getInstance();    
+        // cal.setTime(calendar.getDate());
+        // cal.add(Calendar.YEAR,-3);
+        // cal.add(Calendar.MONTH,-9);
+        // cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        // 
+// 
+        // int weekDay = cal.get(Calendar.DAY_OF_WEEK);
+        // if (weekDay == Calendar.SUNDAY)
+        // {
+        //     cal.add(Calendar.DATE, -2);
+// 
+        // } else if (weekDay == Calendar.SATURDAY)
+        // {
+        //     cal.add(Calendar.DATE, -1);
+        //     format.format(cal.getTime());
+        // }
+        // ICalendar calen = (ICalendar) cal;
+        //     cal.add(Calendar.DATE, -2);
+// 
+        // } else if (weekDay == Calendar.SATURDAY)
+        // {
+        //     cal.add(Calendar.DATE, -1);
+        //     format.format(cal.getTime());
+        // }
+        // ICalendar calen = (ICalendar) cal;
+<span class="fc" id="L215">        payment = new PaymentImpl(calendar);</span>
+
+<span class="fc" id="L217">        assertEquals(&quot;20160129&quot;, payment.getNextPaymentDay());</span>
+
+<span class="fc" id="L219">        assertEquals(&quot;20160229&quot;, payment.getNextPaymentDay());</span>
+
+
+        // assertEquals(&quot;20160129&quot;, payment.getNextPaymentDay());   // &quot;20160129&quot; &quot;Fri Jan 29&quot;
+        // assertEquals(&quot;20160229&quot;, payment.getNextPaymentDay());  // &quot;20160229&quot; &quot;Mon Feb 29&quot;
+<span class="fc" id="L224">        assertEquals(&quot;20160331&quot;, payment.getNextPaymentDay());   // &quot;20160331&quot; &quot;Thu Mar 31&quot;</span>
+<span class="fc" id="L225">        assertEquals(&quot;20160429&quot;, payment.getNextPaymentDay());  //&quot; 20160429&quot; &quot;Fri Apr 29&quot;</span>
+<span class="fc" id="L226">        assertEquals(&quot;20160531&quot;, payment.getNextPaymentDay());   // &quot;20160531&quot; &quot;Tue May 31&quot;</span>
+<span class="fc" id="L227">        assertEquals(&quot;20160630&quot;, payment.getNextPaymentDay());   // &quot;20160631&quot; &quot;Thu Jun 31&quot;</span>
+
+<span class="fc" id="L229">    }</span>
+
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
