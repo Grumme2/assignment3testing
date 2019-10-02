@@ -8,118 +8,133 @@ import java.io.IOException;
 
 import java.text.*;
 import java.util.*;
+import java.util.Calendar;
 
 import org.junit.Test;
 
-<span class="fc" id="L14">public class PaymentTest {</span>
+<span class="fc" id="L15">public class PaymentTest {</span>
     @Test
     public void testSilly() {
-<span class="fc" id="L17">        assertEquals(1, 1);</span>
-<span class="fc" id="L18">        assertEquals(4, 4);</span>
+<span class="fc" id="L18">        assertEquals(1, 1);</span>
+<span class="fc" id="L19">        assertEquals(4, 4);</span>
 
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L21">    }</span>
 
     @Test
     public void testsilly2() {
-<span class="fc" id="L24">        assertEquals(1, 1);</span>
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L25">        assertEquals(1, 1);</span>
+<span class="fc" id="L26">    }</span>
 
     @Test
     public void getpaymentamounttest() throws IOException {
 
         PaymentImpl payment;
-<span class="fc" id="L31">        payment = new PaymentImpl(getCalendar());</span>
-<span class="fc" id="L32">        assertEquals(9904, payment.getMonthlyAmount(&quot;19970606-7973&quot;, 19900, 100, 100));</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L32">        payment = new PaymentImpl(getCalendar());</span>
+<span class="fc" id="L33">        assertEquals(9904, payment.getMonthlyAmount(&quot;19970606-7973&quot;, 19900, 100, 100));</span>
+<span class="fc" id="L34">    }</span>
 
     @Test
     public void getstudyamounttest() throws IOException {
-<span class="fc" id="L37">        PaymentImpl test = new PaymentImpl(getCalendar());</span>
-<span class="fc" id="L38">        int testnotime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 100);</span>
-<span class="fc" id="L39">        int testhalftime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 100);</span>
-<span class="fc" id="L40">        int testalmostfulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 99, 100);</span>
-<span class="fc" id="L41">        int testfulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 100);</span>
-<span class="fc" id="L42">        assertEquals(0, testnotime);</span>
-<span class="fc" id="L43">        assertEquals(1396, testhalftime - 3564);</span>
-<span class="fc" id="L44">        assertEquals(1396, testalmostfulltime - 3564);</span>
-<span class="fc" id="L45">        assertEquals(2816, testfulltime - 7088);</span>
-<span class="fc" id="L46">    }</span>
+<span class="fc" id="L38">        PaymentImpl test = new PaymentImpl(getCalendar());</span>
+<span class="fc" id="L39">        int testnotime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 100);</span>
+<span class="fc" id="L40">        int testhalftime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 100);</span>
+<span class="fc" id="L41">        int testalmostfulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 99, 100);</span>
+<span class="fc" id="L42">        int testfulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 100);</span>
+<span class="fc" id="L43">        assertEquals(0, testnotime);</span>
+<span class="fc" id="L44">        assertEquals(1396, testhalftime - 3564);</span>
+<span class="fc" id="L45">        assertEquals(1396, testalmostfulltime - 3564);</span>
+<span class="fc" id="L46">        assertEquals(2816, testfulltime - 7088);</span>
+<span class="fc" id="L47">    }</span>
 
     @Test
     public void getstudyratiotest() throws IOException {
-<span class="fc" id="L50">        PaymentImpl test = new PaymentImpl(getCalendar());</span>
+<span class="fc" id="L51">        PaymentImpl test = new PaymentImpl(getCalendar());</span>
 
-<span class="fc" id="L52">        int testfull_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 0);</span>
-<span class="fc" id="L53">        int testhalf_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 0);</span>
-<span class="fc" id="L54">        int testno_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 0);</span>
+<span class="fc" id="L53">        int testfull_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 0);</span>
+<span class="fc" id="L54">        int testhalf_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 0);</span>
+<span class="fc" id="L55">        int testno_noratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 0);</span>
 
-<span class="fc" id="L56">        int testfull_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 50);</span>
-<span class="fc" id="L57">        int testhalf_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 50);</span>
-<span class="fc" id="L58">        int testno_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 50);</span>
+<span class="fc" id="L57">        int testfull_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 50);</span>
+<span class="fc" id="L58">        int testhalf_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 50);</span>
+<span class="fc" id="L59">        int testno_halfratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 50);</span>
 
-<span class="fc" id="L60">        int testfull_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 100);</span>
-<span class="fc" id="L61">        int testhalf_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 100);</span>
-<span class="fc" id="L62">        int testno_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 100);</span>
+<span class="fc" id="L61">        int testfull_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 100);</span>
+<span class="fc" id="L62">        int testhalf_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 100);</span>
+<span class="fc" id="L63">        int testno_fullratio = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 100);</span>
 
-<span class="fc" id="L64">        assertEquals(0, testfull_noratio);</span>
-<span class="fc" id="L65">        assertEquals(0, testhalf_noratio);</span>
-<span class="fc" id="L66">        assertEquals(0, testno_noratio);</span>
+<span class="fc" id="L65">        assertEquals(0, testfull_noratio);</span>
+<span class="fc" id="L66">        assertEquals(0, testhalf_noratio);</span>
+<span class="fc" id="L67">        assertEquals(0, testno_noratio);</span>
 
-<span class="fc" id="L68">        assertEquals(7088 + 2816, testfull_halfratio);</span>
-<span class="fc" id="L69">        assertEquals(3564 + 1396, testhalf_halfratio);</span>
-<span class="fc" id="L70">        assertEquals(0, testno_halfratio);</span>
+<span class="fc" id="L69">        assertEquals(7088 + 2816, testfull_halfratio);</span>
+<span class="fc" id="L70">        assertEquals(3564 + 1396, testhalf_halfratio);</span>
+<span class="fc" id="L71">        assertEquals(0, testno_halfratio);</span>
 
-<span class="fc" id="L72">        assertEquals(7088 + 2816, testfull_fullratio);</span>
-<span class="fc" id="L73">        assertEquals(3564 + 1396, testhalf_fullratio);</span>
-<span class="fc" id="L74">        assertEquals(0, testno_fullratio);</span>
-<span class="fc" id="L75">    }</span>
+<span class="fc" id="L73">        assertEquals(7088 + 2816, testfull_fullratio);</span>
+<span class="fc" id="L74">        assertEquals(3564 + 1396, testhalf_fullratio);</span>
+<span class="fc" id="L75">        assertEquals(0, testno_fullratio);</span>
+<span class="fc" id="L76">    }</span>
 
     @Test
     public void getamounttest() throws IOException {
-<span class="fc" id="L79">        PaymentImpl test = new PaymentImpl(getCalendar());</span>
+<span class="fc" id="L80">        PaymentImpl test = new PaymentImpl(getCalendar());</span>
 
-<span class="fc" id="L81">        int loantest_fulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 100);</span>
-<span class="fc" id="L82">        int loantest_almostfulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 99, 100);</span>
-<span class="fc" id="L83">        int loantest_halftime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 100);</span>
-<span class="fc" id="L84">        int loantest_almosthalftime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 49, 100);</span>
-<span class="fc" id="L85">        int loantest_notime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 100);</span>
+<span class="fc" id="L82">        int loantest_fulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 100, 100);</span>
+<span class="fc" id="L83">        int loantest_almostfulltime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 99, 100);</span>
+<span class="fc" id="L84">        int loantest_halftime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 50, 100);</span>
+<span class="fc" id="L85">        int loantest_almosthalftime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 49, 100);</span>
+<span class="fc" id="L86">        int loantest_notime = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, 0, 100);</span>
 
-<span class="fc" id="L87">        assertEquals(7088, loantest_fulltime - 2816);</span>
-<span class="fc" id="L88">        assertEquals(3564, loantest_almostfulltime - 1396);</span>
-<span class="fc" id="L89">        assertEquals(3564, loantest_halftime - 1396);</span>
-<span class="fc" id="L90">        assertEquals(0, loantest_almosthalftime);</span>
-<span class="fc" id="L91">        assertEquals(0, loantest_notime);</span>
+<span class="fc" id="L88">        assertEquals(7088, loantest_fulltime - 2816);</span>
+<span class="fc" id="L89">        assertEquals(3564, loantest_almostfulltime - 1396);</span>
+<span class="fc" id="L90">        assertEquals(3564, loantest_halftime - 1396);</span>
+<span class="fc" id="L91">        assertEquals(0, loantest_almosthalftime);</span>
+<span class="fc" id="L92">        assertEquals(0, loantest_notime);</span>
 
-<span class="fc bfc" id="L93" title="All 2 branches covered.">        for (int i = 0; i &lt;= 100; i++) {</span>
-<span class="fc" id="L94">            int looptest = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, i, 100);</span>
-<span class="fc bfc" id="L95" title="All 2 branches covered.">            if (i &lt; 50) {</span>
-<span class="fc" id="L96">                assertEquals(0, looptest);</span>
-<span class="fc bfc" id="L97" title="All 2 branches covered.">            } else if (i &lt; 100) {</span>
-<span class="fc" id="L98">                assertEquals(3564, looptest - 1396);</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        for (int i = 0; i &lt;= 100; i++) {</span>
+<span class="fc" id="L95">            int looptest = test.getMonthlyAmount(&quot;19970606-7973&quot;, 0, i, 100);</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            if (i &lt; 50) {</span>
+<span class="fc" id="L97">                assertEquals(0, looptest);</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">            } else if (i &lt; 100) {</span>
+<span class="fc" id="L99">                assertEquals(3564, looptest - 1396);</span>
             } else {
-<span class="fc" id="L100">                assertEquals(7088, looptest - 2816);</span>
+<span class="fc" id="L101">                assertEquals(7088, looptest - 2816);</span>
             }
         }
-<span class="fc" id="L103">    }</span>
+<span class="fc" id="L104">    }</span>
 
-    // @Test
-    // public void getpaydaytest() throws IOException {
-    //     ICalendar cal = getCalendar();
-    //     PaymentImpl test2 = new PaymentImpl(cal);
+    @Test
+    public void getpaydaytest() throws IOException {
+<span class="fc" id="L108">        Calendar cal = Calendar.getInstance();</span>
+<span class="fc" id="L109">        cal.set(2016,0,1);</span>
+<span class="nc" id="L110">        System.out.println(&quot;Date is : &quot; + cal.getTime());</span>
 
-    //     String firstpayment = test2.getNextPaymentDay();
-    //     String secondpayment = test2.getNextPaymentDay();
-    //     String thirdpayment = test2.getNextPaymentDay();
-    //     String fourthpayment = test2.getNextPaymentDay();
-    //     String fifthpayment = test2.getNextPaymentDay();
-    //     String sixthpayment = test2.getNextPaymentDay();
+<span class="nc" id="L112">        ICalendar calendartest = (ICalendar) cal;</span>
 
-    //     assertEquals(&quot;20160129&quot;, firstpayment);   // &quot;20160129&quot; &quot;Fri Jan 29&quot;
-    //     assertEquals(&quot;20160229&quot;, secondpayment);  // &quot;20160229&quot; &quot;Mon Feb 29&quot;
-    //     assertEquals(&quot;20160331&quot;, thirdpayment);   // &quot;20160331&quot; &quot;Thu Mar 31&quot;
-    //     assertEquals(&quot;20160429&quot;, fourthpayment);  //&quot; 20160429&quot; &quot;Fri Apr 29&quot;
-    //     assertEquals(&quot;20160531&quot;, fifthpayment);   // &quot;20160531&quot; &quot;Tue May 31&quot;
-    //     assertEquals(&quot;20160631&quot;, sixthpayment);   // &quot;20160631&quot; &quot;Thu Jun 31&quot;
-    // }
+<span class="nc" id="L114">        PaymentImpl test = new PaymentImpl(calendartest);</span>
+<span class="nc" id="L115">        String firstpayment = test.getNextPaymentDay();</span>
+<span class="nc" id="L116">        cal.set(2016,1,1);</span>
+<span class="nc" id="L117">        System.out.println(&quot;Date is : &quot; + cal.getTime());</span>
+<span class="nc" id="L118">        String secondpayment = test.getNextPaymentDay();</span>
+<span class="nc" id="L119">        cal.set(2016,2,1);</span>
+<span class="nc" id="L120">        System.out.println(&quot;Date is : &quot; + cal.getTime());</span>
+<span class="nc" id="L121">        String thirdpayment = test.getNextPaymentDay();</span>
+<span class="nc" id="L122">        cal.set(2016,3,1);</span>
+<span class="nc" id="L123">        System.out.println(&quot;Date is : &quot; + cal.getTime());</span>
+<span class="nc" id="L124">        String fourthpayment = test.getNextPaymentDay();</span>
+<span class="nc" id="L125">        cal.set(2016,4,1);</span>
+<span class="nc" id="L126">        System.out.println(&quot;Date is : &quot; + cal.getTime());</span>
+<span class="nc" id="L127">        String fifthpayment = test.getNextPaymentDay();</span>
+<span class="nc" id="L128">        cal.set(2016,5,1);</span>
+<span class="nc" id="L129">        System.out.println(&quot;Date is : &quot; + cal.getTime());</span>
+<span class="nc" id="L130">        String sixthpayment = test.getNextPaymentDay();</span>
+
+<span class="nc" id="L132">        assertEquals(&quot;20160129&quot;, firstpayment);   // &quot;20160129&quot; &quot;Fri Jan 29&quot; &quot;20191031&quot;</span>
+        // assertEquals(&quot;20160229&quot;, secondpayment);  // &quot;20160229&quot; &quot;Mon Feb 29&quot; &quot;20191130&quot;
+        // assertEquals(&quot;20160331&quot;, thirdpayment);   // &quot;20160331&quot; &quot;Thu Mar 31&quot; &quot;20191231&quot;
+        // assertEquals(&quot;20160429&quot;, fourthpayment);  //&quot; 20160429&quot; &quot;Fri Apr 29&quot; &quot;20201301&quot;
+        // assertEquals(&quot;20160531&quot;, fifthpayment);   // &quot;20160531&quot; &quot;Tue May 31&quot; &quot;20200228&quot;
+        // assertEquals(&quot;20160631&quot;, sixthpayment);   // &quot;20160631&quot; &quot;Thu Jun 31&quot; &quot;20200331&quot;
+<span class="nc" id="L138">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
