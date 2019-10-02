@@ -75,9 +75,9 @@ public class PaymentImpl implements IPayment
     public int getMonthlyAmount(String personId, int income, int studyRate, int completionRatio)
             throws IllegalArgumentException
     {
-<span class="pc bpc" id="L78" title="4 of 8 branches missed.">        if (personId == null || income &lt; 0 || studyRate &lt; 0 || completionRatio &lt; 0)</span>
+<span class="fc bfc" id="L78" title="All 8 branches covered.">        if (personId == null || income &lt; 0 || studyRate &lt; 0 || completionRatio &lt; 0)</span>
         {
-<span class="nc" id="L80">            throw new IllegalArgumentException(&quot;Invalid input.&quot;);</span>
+<span class="fc" id="L80">            throw new IllegalArgumentException(&quot;Invalid input.&quot;);</span>
         }
 <span class="fc" id="L82">        int age = getAge(personId);</span>
 <span class="fc" id="L83">        int amount = getLoan(age, income, studyRate, completionRatio);</span>

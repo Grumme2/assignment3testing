@@ -38,6 +38,37 @@ public class PaymentTest{
         PaymentImpl payment;
         payment = new PaymentImpl(getCalendar());
 
+        boolean thrownpid= false;
+        boolean throwncomp=false; 
+        boolean thrownmoney= false;
+        boolean thrownrate = false;
+
+        try {
+                payment.getMonthlyAmount(null, 900, 100, 100);
+        } catch (IllegalArgumentException e) {
+                thrownpid = true;
+        }
+        try {
+                payment.getMonthlyAmount("19990505-0000", -5, 100, 100);
+        } catch (IllegalArgumentException e) {
+                thrownmoney = true;
+        }
+        try {
+                payment.getMonthlyAmount("19990505-0000", 900, -3, 100);
+        } catch (IllegalArgumentException e) {
+                thrownrate = true;
+        }
+        try {
+                payment.getMonthlyAmount("19990505-0000", 900, 100, -2);
+        } catch (IllegalArgumentException e) {
+                throwncomp = true;
+        }
+
+        assertTrue("thrownpid",thrownpid);
+        assertTrue("thrownmoney", thrownmoney);
+        assertTrue("thrownrate", thrownrate);
+        assertTrue("throwncomp", throwncomp);
+
         for(int i = 0; i<100; i++){
             int yearborn =  2019-i;
             String yearstring = Integer.toString(yearborn) + "1001-0000";
